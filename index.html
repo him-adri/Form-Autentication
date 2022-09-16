@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authentication</title>
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- ----------------------------- Sign Up Form ----------------------------- -->
+
+      <form class="row g-3 registration-form" id="signup-form">
+        <h1 class="col-md-12 display-4 sign-up-title">Sign Up</h1>
+        <div
+          class="alert alert-success alert-dismissible fade show signup-alert col-md-8"
+          role="alert"
+          id="signup-alert-success"
+        >
+          Signed up successfully!
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div
+          class="alert alert-danger alert-dismissible fade show signup-alert col-md-8"
+          role="alert"
+          id="signup-alert-failure"
+        >
+          Sign up unsuccessful!
+          <button
+            type="button"
+            class="close"
+            data-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        
+        <div class="col-md-6">
+          <label for="signup-first-name" class="form-label">First name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="signup-first-name"
+            required
+            autocomplete="off"
+            onkeyup="signup()"
+          />
+          <div id="valid-fname">Looks good!</div>
+          <div id="invalid-fname">Please enter a valid name</div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="signup-last-name" class="form-label">Last name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="signup-last-name"
+            required
+            autocomplete="off"
+            onkeyup="signup()"
+          />
+          <div id="valid-lname">Looks good!</div>
+          <div id="invalid-lname">Please enter a valid name</div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="signup-email" class="form-label">Email</label>
+          <div class="input-group has-validation">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupPrepend">@</span>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              id="signup-email"
+              aria-describedby="inputGroupPrepend"
+              required
+              autocomplete="off"
+              onkeyup="signup()"
+            />
+          </div>
+            <div id="valid-email">Looks Good!</div>
+            <div id="invalid-email">Please enter a valid email.</div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="signup-phone" class="form-label">Phone Number</label>
+          <div class="input-group has-validation">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupPrepend">+91</span>
+            </div>
+            <input
+              type="text"
+              class="form-control"
+              id="signup-phone"
+              aria-describedby="inputGroupPrepend"
+              required
+              autocomplete="off"
+              onkeyup="signup()"
+            />
+          </div>
+            <div id="valid-phno">Looks Good!</div>
+            <div id="invalid-phno">Please enter a valid phone number.</div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="signup-password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="signup-password"
+            required
+            autocomplete="off"
+            onkeyup="signup()"
+          />
+          <div id="valid-password">Looks Good!</div>
+          <div id="invalid-password">Password should be between 7-14 characters. Start with letters. </div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="signup-confirm-password" class="form-label"
+            >Confirm Password</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="signup-confirm-password"
+            required
+            autocomplete="off"
+            onkeyup="signup()"
+          />
+          <div id="valid-cpassword">
+            Password and confirm password matched.
+          </div>
+          <div id="invalid-cpassword">
+            Password and confirm password do not match.
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="invalidCheck"
+              required
+            />
+            <label class="form-check-label" for="invalidCheck">
+              Agree to terms and conditions
+            </label>
+            <div class="invalid-feedback">
+              You must agree before submitting.
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 button-wrapper">
+          <button class="btn btn-dark" type="button" onclick="signupValidation()">
+            Sign Up
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ----------------------------- Sign Up Form ----------------------------- -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>
